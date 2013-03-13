@@ -5,7 +5,7 @@ String Table - Changelog
 
 * Umbennenung der DB nach `rex_string_table`
 * Umstellung auf `clang` DB Felder
-* De Einträge können nun sortiert werden
+* Die String-Einträge können nun sortiert werden
 * Code cleanup
 
 ### Version 1.1.6 - 10. März 2013
