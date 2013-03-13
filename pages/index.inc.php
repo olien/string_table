@@ -39,17 +39,22 @@ if ($func == '')
 													ORDER BY	'.$prefix_field.'prior 
 											');
 	// $list->debug = true;
-	$list->addTableColumnGroup(array(40, 250, '*', 153));
+	$list->addTableColumnGroup(array(50, 250, '*', 153));
 
 	$list->addParam("clang", $clang);
 	
 	$imgHeader = '<a href="'. $list->getUrl(array('func' => 'add', 'clang' => $clang)) .'"><img src="media/metainfo_plus.gif" /></a>';
 	
-	$list->addColumn($imgHeader, '###'.$prefix_field.'id###', 0, array('<th class="rex-icon">###VALUE###</th>','<td class="rex-small">###VALUE###</td>'));
+	//$list->addColumn($imgHeader, '###'.$prefix_field.'id###', 0, array('<th class="rex-icon">###VALUE###</th>','<td class="rex-small">###VALUE###</td>'));
 
 	$list->removeColumn($prefix_field.'pid');
 	$list->removeColumn($prefix_field.'id');
 	$list->removeColumn($prefix_field.'prior');
+
+	$thIcon = '<a class="rex-i-element rex-i-generic-add" href="'. $list->getUrl(array('func' => 'add')) .'"><span class="rex-i-element-text">Ansicht erstellen</span></a>';
+	$tdIcon = '<span class="rex-i-element rex-i-generic"><span class="rex-i-element-text">###name###</span></span>';
+	$list->addColumn($thIcon, $tdIcon, 0, array('<th class="rex-icon">###VALUE###</th>','<td class="rex-icon">###VALUE###</td>'));
+	$list->setColumnParams($thIcon, array('func' => 'edit', 'id' => '###id###'));
 	
 		
 	$list->addColumn('function', $I18N->msg('edit'));
@@ -88,7 +93,7 @@ if($func == "add" || $func == "edit")
 		$form->setLanguageDependent($prefix_field.'id', $prefix_field.'clang');
 		
 	
-	if ($func == 'add' || ($func == 'edit' && $REX['USER'] && $REX['USER']->isAdmin())) {
+	if ($REX['USER'] && $REX['USER']->isAdmin()) {
 		$field =& $form->addTextField($prefix_field . 'keyname');
 	} else {
 		$field =& $form->addReadOnlyField($prefix_field . 'keyname');
@@ -100,10 +105,12 @@ if($func == "add" || $func == "edit")
 	$field =& $form->addTextareaField($prefix_field.'value');
 	$field->setLabel($I18N->msg('string_table_value'));
 
-	$field =& $form->addPrioField('prior');
-	$field->setLabel($I18N->msg('string_table_prior'));
-	$field->setLabelField('keyname');
-	//$field->setWhereCondition('pid = '. $id);
+	if ($REX['USER'] && $REX['USER']->isAdmin()) {
+		$field =& $form->addPrioField('prior');
+		$field->setLabel($I18N->msg('string_table_prior'));
+		$field->setLabelField('keyname');
+
+	}
 		
 	$form->show();
 		

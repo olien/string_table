@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS `" . $REX['TABLE_PREFIX'] . "1024_strings` (
 `value` TEXT NOT NULL,
 `keyname` VARCHAR(255) NOT NULL,
 `prior` INT(11) NOT NULL,
+`updatedate` int(11) NOT NULL,
 PRIMARY KEY ( `pid` )
 );");
 
