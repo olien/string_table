@@ -30,13 +30,6 @@ class rex_string_table {
 		global $REX, $I18N;
 	
 		$return = '';
-		$url = '';
-
-		if (is_array($params)) {
-			foreach ($params as $key => $val) {
-				$url .= '&amp;' . $key . '=' . $val;
-			}
-		}
 	
 		$clang = rex_request('clang', 'int');
 		$return .= '
@@ -62,8 +55,16 @@ class rex_string_table {
 			if ($key == $clang) {
 				$class = ' class="rex-active"';
 			}
-			
-			$return .= '<a'.$class.' href="index.php?page='.$REX['PAGE'].$url.'&amp;clang='. $key .'">'. $val .'</a>';
+
+			/*$curQuery = rex_post('current_query', 'string', '');
+
+			if ($curQuery != '') {
+				$urlQuery = $curQuery;
+			} else {
+				$urlQuery = self::getURLQuery();
+			}*/
+
+			$return .= '<a' . $class . ' href="index.php?' . self::getURLQuery($key) . '">' . $val . '</a>';
 			$return .= '</li>';
 		}
 	
@@ -74,6 +75,14 @@ class rex_string_table {
 		';
 	
 		return $return;
+	}
+
+	static function getURLQuery($clang) {
+		global $_GET;
+
+		$params = $_GET;
+		$params['clang'] = $clang;
+		return http_build_query($params);
 	}
 }
 
