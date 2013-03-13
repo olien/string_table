@@ -15,10 +15,6 @@ $REX['PERM'][] = 'string_table[]';
 
 $prefix = $REX['ADDON']['table_prefix'][$mypage];
 
-if (!defined('TBL_STRING_TABLE')) {
-  define('TBL_STRING_TABLE', $prefix . 'strings');
-}
-
 // include main class
 require_once($basedir . '/classes/class.rex_string_table.inc.php');
 

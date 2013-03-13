@@ -13,11 +13,11 @@ class rex_string_table {
 		global $REX;
 		
 		$sql = new rex_sql();
-		$sql->setQuery('SELECT value, keyname FROM '. $REX['ADDON']['table_prefix']['string_table'] .'strings WHERE clang = "' . $REX['CUR_CLANG'] . '"');
+		$sql->setQuery('SELECT keyname, value_' . $REX['CUR_CLANG'] . ' FROM '. $REX['TABLE_PREFIX'] . 'string_table');
 		$rows = $sql->getRows();
 
 		for ($i = 0; $i < $rows; $i ++) {
-			self::$stringTable[$sql->getValue('keyname')] = nl2br($sql->getValue('value'));
+			self::$stringTable[$sql->getValue('keyname')] = nl2br($sql->getValue('value_' . $REX['CUR_CLANG']));
 			$sql->next();
 		}
 	}
