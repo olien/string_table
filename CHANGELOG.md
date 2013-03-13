@@ -1,6 +1,13 @@
 String Table - Changelog
 ========================
 
+### Version 1.2.0 - 13. März 2013
+
+* Umbennenung der DB nach `rex_string_table`
+* Umstellung auf `clang` DB Felder
+* De Einträge können nun sortiert werden
+* Code cleanup
+
 ### Version 1.1.6 - 10. März 2013
 
 Erstes Release mit folgenden Änderungen/Features gegenüber dem original opf_lang AddOn:
