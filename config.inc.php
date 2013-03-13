@@ -1,11 +1,6 @@
 <?php
 $mypage = 'string_table'; // only for this file
-
 $basedir = dirname(__FILE__);
-
-if ($REX['REDAXO']) {
-	$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/' . $mypage . '/lang/');
-}
 
 $REX['ADDON']['rxid'][$mypage] = "1024";
 $REX['ADDON']['page'][$mypage] = $mypage;
@@ -29,18 +24,16 @@ require_once($basedir . '/classes/class.rex_string_table.inc.php');
 
 // fetch all strings for later usage with getString method
 if (!$REX['SETUP']) {
-	rex_register_extension('ADDONS_INCLUDED', function ($params) {
-		global $REX;
-		rex_string_table::fetchStrings();
-	});
+	rex_register_extension('ADDONS_INCLUDED', 'rex_string_table::fetchStrings');
 }
 
-if ($REX['REDAXO']) {	
+if ($REX['REDAXO']) {
+	$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/' . $mypage . '/lang/');
+
 	require_once($basedir . '/classes/class.rex_form_extended.inc.php');
 	require_once $basedir . '/extensions/extension_clang.inc.php';
 
 	rex_register_extension('CLANG_ADDED', 'string_table_clang_added');
 	rex_register_extension('CLANG_DELETED', 'string_table_clang_delete');
-	
 } 
-?>
+

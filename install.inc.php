@@ -1,11 +1,7 @@
 <?php
-
-// CREATE/UPDATE DATABASE
 $sql = new rex_sql();
 // $sql->debugsql=1;
 
-
-// ----- usertabelle
 $sql->setQuery("
 CREATE TABLE IF NOT EXISTS `" . $REX['TABLE_PREFIX'] . "1024_strings` (
 `pid` INT(11) unsigned NOT NULL auto_increment,
@@ -18,7 +14,5 @@ CREATE TABLE IF NOT EXISTS `" . $REX['TABLE_PREFIX'] . "1024_strings` (
 PRIMARY KEY ( `pid` )
 );");
 
-
 $REX['ADDON']['install']['string_table'] = 1;
 
-?>

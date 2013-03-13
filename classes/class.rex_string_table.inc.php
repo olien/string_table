@@ -30,13 +30,11 @@ class rex_string_table {
 		global $REX, $I18N;
 	
 		$return = '';
-	
 		$url = '';
-		if (is_array($params))
-		{
-			foreach ($params as $key => $val)
-			{
-				$url .= '&amp;'.$key.'='.$val;
+
+		if (is_array($params)) {
+			foreach ($params as $key => $val) {
+				$url .= '&amp;' . $key . '=' . $val;
 			}
 		}
 	
@@ -48,23 +46,24 @@ class rex_string_table {
 					 <li>'.$I18N->msg("languages").' : </li>';
 	
 		$i = 10;
-		foreach($REX['CLANG'] as $key => $val)
-		{
+
+		foreach($REX['CLANG'] as $key => $val) {
 			$i++;
 			
-			if($i == 1)
-				$return .= '<li class="rex-navi-first rex-navi-clang-'.$key.'">';
-			else
-				$return .= '<li class="rex-navi-clang-'.$key.'">';
+			if ($i == 1) {
+				$return .= '<li class="rex-navi-first rex-navi-clang-' . $key . '">';
+			} else {
+				$return .= '<li class="rex-navi-clang-' . $key . '">';
+			}
 					
 			$val = rex_translate($val);
-	
 			$class = '';
-			if ($key == $clang)
+
+			if ($key == $clang) {
 				$class = ' class="rex-active"';
+			}
 			
 			$return .= '<a'.$class.' href="index.php?page='.$REX['PAGE'].$url.'&amp;clang='. $key .'">'. $val .'</a>';
-		
 			$return .= '</li>';
 		}
 	
@@ -78,4 +77,3 @@ class rex_string_table {
 	}
 }
 
-?>
