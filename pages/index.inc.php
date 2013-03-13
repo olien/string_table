@@ -32,10 +32,11 @@ if ($func == '')
 	$list = rex_list::factory('SELECT '.$prefix_field.'pid, 
 																		'.$prefix_field.'id,
 																		'.$prefix_field.'keyname, 
-																		'.$prefix_field.'value
+																		'.$prefix_field.'value,
+																		'.$prefix_field.'prior 
 													FROM 			'. $table .'
 													WHERE			clang = "'.$clang.'"
-													ORDER BY	'.$prefix_field.'id 
+													ORDER BY	'.$prefix_field.'prior 
 											');
 	// $list->debug = true;
 	$list->addTableColumnGroup(array(40, 250, '*', 153));
@@ -48,6 +49,7 @@ if ($func == '')
 
 	$list->removeColumn($prefix_field.'pid');
 	$list->removeColumn($prefix_field.'id');
+	$list->removeColumn($prefix_field.'prior');
 	
 		
 	$list->addColumn('function', $I18N->msg('edit'));
@@ -97,6 +99,11 @@ if($func == "add" || $func == "edit")
 	
 	$field =& $form->addTextareaField($prefix_field.'value');
 	$field->setLabel($I18N->msg('string_table_value'));
+
+	$field =& $form->addPrioField('prior');
+	$field->setLabel($I18N->msg('string_table_prior'));
+	$field->setLabelField('keyname');
+	//$field->setWhereCondition('pid = '. $id);
 		
 	$form->show();
 		
