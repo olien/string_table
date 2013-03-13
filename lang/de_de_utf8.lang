@@ -5,3 +5,4 @@ string_table_var = Variable
 string_table_hint = Hinweis
 string_table_string = String
 string_table_prior = Reihenfolge
+string_table_key_deleted = Eintrag wurde gelöscht
