@@ -60,10 +60,16 @@ if ($func == '') {
 	$list->removeColumn('prior');
 	$list->removeColumn('updatedate');
 
-	for ($i = 0; $i < count($REX['CLANG']); $i++) {
-		if ($i != $clang) {
-			$list->removeColumn('value_' . $i);
+	reset($REX['CLANG']);
+
+	while (current($REX['CLANG'])) {
+		$curKey = key($REX['CLANG']);
+
+		if ($curKey != $clang) {
+			$list->removeColumn('value_' . $curKey);
 		}
+
+		next($REX['CLANG']);
 	}
 
 	$list->setColumnLabel('keyname', $I18N->msg('string_table_keyname'));

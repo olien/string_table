@@ -12,6 +12,8 @@ $sql->setQuery("
 );");
 
 // add lang fields
+reset($REX['CLANG']);
+
 while (current($REX['CLANG'])) {
     $sql->setQuery('ALTER TABLE `' . $REX['TABLE_PREFIX'] . 'string_table` ADD `value_' . key($REX['CLANG']) . '` TEXT NOT NULL');
     next($REX['CLANG']);
