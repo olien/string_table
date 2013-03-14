@@ -105,6 +105,14 @@ if ($func == '') {
 	
 	$list->show();
 } elseif ($func == "add" || $func == "edit") {
+	// remove delete button for non admins
+	if ($REX['USER'] && !$REX['USER']->isAdmin()) {
+		rex_register_extension('REX_FORM_CONTROL_FIElDS', function ($params) {
+			$params['subject']['delete'] = null;
+			return $params['subject'];
+		});
+	}
+
 	$legend = $I18N->msg('add');
 
 	if ($func == 'edit') {
