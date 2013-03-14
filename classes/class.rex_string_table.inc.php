@@ -56,15 +56,19 @@ class rex_string_table {
 				$class = ' class="rex-active"';
 			}
 
-			/*$curQuery = rex_post('current_query', 'string', '');
+			$curQuery = rex_post('current_query', 'string', '');
 
 			if ($curQuery != '') {
 				$urlQuery = $curQuery;
+				
+				parse_str($curQuery, $vals);
+				$vals['clang'] = $key;
+				$urlQuery = http_build_query($vals);
 			} else {
-				$urlQuery = self::getURLQuery();
-			}*/
+				$urlQuery = self::getURLQuery($key);
+			}
 
-			$return .= '<a' . $class . ' href="index.php?' . self::getURLQuery($key) . '">' . $val . '</a>';
+			$return .= '<a' . $class . ' href="index.php?' . $urlQuery . '">' . $val . '</a>';
 			$return .= '</li>';
 		}
 	

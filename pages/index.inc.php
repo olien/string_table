@@ -145,6 +145,10 @@ if ($func == '') {
 		$field->setLabel($I18N->msg('string_table_prior'));
 		$field->setLabelField('keyname');
 	}
+
+	if (!rex_request('current_query', 'string')) {
+		$form->addParam('current_query', rex_string_table::getURLQuery($REX['CUR_CLANG']));	
+	}
 		
 	$form->show();
 }
