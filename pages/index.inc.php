@@ -42,7 +42,7 @@ if ($warning != '') {
 
 // languages
 if (count($REX['CLANG']) > 1) {
-	echo rex_string_table::string_table_languages($params);
+	rex_string_table::string_table_languages($params);
 }
 
 // rex_list
