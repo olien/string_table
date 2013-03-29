@@ -7,3 +7,6 @@ string_table_string = String
 string_table_prior = Reihenfolge
 string_table_key_deleted = Eintrag wurde gelöscht
 string_table_no_lang_perm = Sie haben keine Editier-Erlaubnis für diese Sprache.
+string_table_prio_mode = Sortiermodus:
+string_table_prio_mode_on = An
+string_table_prio_mode_off = Aus

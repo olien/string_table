@@ -104,6 +104,98 @@ if ($func == '') {
 	}
 	
 	$list->show();
+?>
+
+<?php if (isset($REX['USER']) && $REX['USER']->isAdmin() && (OOPlugin::isActivated('be_utilities', 'jquery_ui') || OOPlugin::isActivated('be_style', 'jquery_ui'))) { ?>
+<p class="field switch" style="display: none;">
+	<span><?php echo $I18N->msg('string_table_prio_mode'); ?></span>
+	<label class="cb-enable"><span><?php echo $I18N->msg('string_table_prio_mode_on'); ?></span></label>
+	<label class="cb-disable selected"><span><?php echo $I18N->msg('string_table_prio_mode_off'); ?></span></label>
+	<input type="checkbox" id="checkbox" class="checkbox" name="field2" />
+</p>
+
+<style type="text/css">
+.rex-table tbody tr {cursor: auto;}
+.rex-table tbody tr.move {cursor: move;}
+
+.switch { float:right; margin-top: 10px; }
+.switch > span { float: left; height: 30px; line-height: 29px; margin-right: 7px;}
+.switch label { cursor: pointer; }
+.switch input { display: none; }
+
+.cb-enable, .cb-disable, .cb-enable span, .cb-disable span { background: url(data:image/gif;base64,R0lGODlhBQAOAeYAAL6+vlyRE4q8Je7u7oC0HZubm0l0EFaKEYqKimKNGJKSklxcXGCUFGmTGfDw8NjY2H2xHdLS0mSTF0JtDXWbKIaGhoKCglJ7E3mqH0tzEnyuIPX19WmfF+np6W2eGm+kGHGmGHZ2dmmZGVuFFd7e3mRkZI2NjYSEhICAgJOyV3mXTXKcH1VVVVGFD12NFVKGEIiIiHGhHI3AJ2FhYYa7HmSaFViOEleCFF6IFnx8fHBwcHp6eo+Pj2pqanJycm5ubnR0dH9/f2xsbHh4eGhoaHmtG3arGnuwHHOpGWecFmKYFGuhF+Xl5YS2I4S5HpSUlIi8H4a5H0+BD5GRkWdnZ4e5JMTExODg4HWmHc/Pz4GyImCQFXOkHX+wIYO2Hqy9lMjIyKysrPLy8nWgIG6bGrzOmbDDj87Yv9Xfw4CxHliHE3CjGHqkIX+lMnyvHW6YHYGeV3inHYa0JXquHFh/IFyCJmWWF1WAFJu2YYKwJIK0I1yPE9XV1ff392ZmZvj4+CH5BAAAAAAALAAAAAAFAA4BAAf/gACCgkyFhQ6IiH+LjI2Oj5CRkpOUlZaXmI59m5t8np4hoaEIpKQKp6dPqqqop1Ovrzyysia1taW4pRW7vL0Wv8DBQcPDOcbGO8nJQ8zMoqFA0dE+1NQ619c/2tpC3d094OBE4+NU5uYl6errLO3tDfDwEPPzUfb2UPn5NPz8Tv//vAgUSKBgQXrzjihUWKRhQyMQISKZOBGERYsfMmZcwpEjh48fk4gUWaNkSSUoUTJYuTKAy5cwbciUeaCmzZsvcuZswZOnlJ8/JwgVuqhDFit/SFjJQmIAGCaI+DzY0OdPBDGMIlRdxGfrn66MwHL1KvYr2bNh0Y5Ny3atW7Nt/+G+ncqIBAlGDvgMYNSBzxUHiwZcebDoQYEKfwCEyFHhwQ4EpwpYQGWBB6oclk9hnrXDlokQuELAKAWkl49eOoKlBvaDWJAex3IQUbbDT7Mhfp6VkAZkRjUfM7DpWLDtxwJvQhaE6zHDDzkLC/xIj7CguZ8/YVhUX5SlQolFZSg0+JNCAhkMZSTESeOFAhn2NCRg8MIvwRGACdwQEJhgjsEERdCDgxELjQCCQwZGdMMaFN3gwUUXcKDRBUl0dEENIF1gx0gGMGBShykZsAdLBtjw0gQHnHjATBO8YNMEUtiUgQE6fQFjTn+oMIEBUizyBR0TLNXBIiQcdRciTICxV/8fGzzAByNiRMBIH1Iu0seTVmL5x5VTasllll2GCeaYW3pppphlovllmmQ2WdddfwzAByJX8DHkA1fs9ccJBRD2RwU5hADAH6cgsMMDT5xiQQGo8DDZKTxsJksOnj1WCmikwBBCL6XtcoIPqgGDgg6u/RBbD7QRcVtuovjBWwm/BYfNDMUd541y4SxAjh/W+bEACtLNsEAEwrIQxh8lVJDFIm3ggcYiebCxghl/yCCDHGOgYa0MGKSwrQBtCCCuAGOMS24V6FYxRhPsNrFCu3qsoMW8WrzRxb1dvKHBvho0gMG/GPgLcANYFIxFAlwkzEUCMTQcQwIeROwBDhJPLMIuxSKMgLEIN9jhsR03SCCyBHdsYfIWF5zsAh0utHyHCi2rccEZMhtAbR1wnLFIIAA7) repeat-x; display: block; float: left; }
+.cb-enable span, .cb-disable span { line-height: 30px; display: block; background-repeat: no-repeat; font-weight: bold; }
+.cb-enable span { background-position: left -90px; padding: 0 10px; }
+.cb-disable span { background-position: right -180px;padding: 0 10px; }
+.cb-disable.selected { background-position: 0 -30px; }
+.cb-disable.selected span { background-position: right -210px; color: #fff; }
+.cb-enable.selected { background-position: 0 -60px; }
+.cb-enable.selected span { background-position: left -150px; color: #fff; }
+</style>
+
+<script type="text/javascript">
+jQuery(document).ready( function($) {
+	/* sortable tr's */
+	if (jQuery.ui) {
+		$(".rex-table tbody").sortable({
+			helper: function(e, tr) {
+				var $originals = tr.children();
+				var $helper = tr.clone();
+
+				$helper.children().each(function(index) {
+					$(this).width($originals.eq(index).width());
+					$(this).css('background', '#ddd');
+				});
+
+				return $helper;
+			},
+			cursor: 'move',
+			stop:function(i) {
+				var order = [];
+
+				$(".rex-table tbody tr").each(function() {
+					order.push($(this).find('td:nth-child(2)').html());
+				});
+
+				$.ajax({
+					type: "POST",
+					url: window.location.pathname + '?function=update_string_table_prio',
+					data: { 'order[]': order },
+					success: function() {
+					}               
+				});
+			}
+		}).disableSelection();
+
+		/* on/off switch */
+		$('.rex-table tbody').sortable('disable');
+		$('.switch').show();
+
+		$(".cb-enable").click(function(){
+			var parent = $(this).parents('.switch');
+			$('.cb-disable',parent).removeClass('selected');
+			$(this).addClass('selected');
+			$('.checkbox',parent).attr('checked', true);
+
+			$('.rex-table tbody').sortable('enable');
+			$('.rex-table tbody tr').addClass('move');
+		});
+
+		$(".cb-disable").click(function(){
+			var parent = $(this).parents('.switch');
+			$('.cb-enable',parent).removeClass('selected');
+			$(this).addClass('selected');
+			$('.checkbox',parent).attr('checked', false);
+
+			$('.rex-table tbody').sortable('disable');
+			$('.rex-table tbody tr').removeClass('move');
+		});
+	}
+});
+</script>
+<?php } ?>
+
+<?php
 } elseif ($func == "add" || $func == "edit") {
 	// remove delete button for non admins
 	if ($REX['USER'] && !$REX['USER']->isAdmin()) {
@@ -152,7 +244,7 @@ if ($func == '') {
 		
 	$form->show();
 }
-
 include $REX['INCLUDE_PATH'].'/layout/bottom.php';
+?>
 
 
