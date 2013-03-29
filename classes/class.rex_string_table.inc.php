@@ -105,14 +105,12 @@ class rex_string_table {
 		return http_build_query($params);
 	}
 
-	static function updatePrio() {
+	static function updatePrio($order) {
 		global $REX;
 
 		$sql = rex_sql::factory();
-		//$sql->debugsql = 1;
-		$order = $_POST['order'];
 
-		foreach($order as $prio => $keyname) {
+		foreach ($order as $prio => $keyname) {
 			$sql->setQuery('UPDATE ' . $REX['TABLE_PREFIX'] . 'string_table SET prior = ' . ($prio + 1) . ', updatedate = ' . time() . ' WHERE keyname like "' . $keyname . '"');
 		}
 	}
