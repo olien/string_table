@@ -79,7 +79,7 @@ class rex_prio_switch {
 
 				.onoffswitch-label {
 					display: block; overflow: hidden; cursor: pointer;
-					border: 2px solid #999999; border-radius: 17px;
+					border: 2px solid #bbb; border-radius: 17px;
 				}
 
 				.onoffswitch-inner {
@@ -114,7 +114,7 @@ class rex_prio_switch {
 				.onoffswitch-switch {
 					width: 17px; margin: 0px;
 					background: #FFFFFF;
-					border: 2px solid #999999; border-radius: 17px;
+					border: 2px solid #bbb; border-radius: 17px;
 					position: absolute; top: 0; bottom: 0; right: 40px;
 					-moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
 					-o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s;
