@@ -9,6 +9,7 @@ Features
 * Einen String kann man über die Methode `rex_string_table::getString($key);` auslesen
 * Mehrsprachigkeit wird berücksichtigt
 * Nicht-Admins dürfen den String-Key nicht ändern
+* Prio änderbar Drag'n Drop inkl. coolem On/Off Switch
 
 Hinweise
 --------
