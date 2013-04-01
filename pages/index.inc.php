@@ -143,19 +143,31 @@ if ($func == '') {
 	$field =& $form->addTextareaField('value_' . $clang);
 	$field->setLabel($I18N->msg('string_table_value'));
 
+	// prio 
 	if ($REX['USER'] && $REX['USER']->isAdmin()) {
 		$field =& $form->addPrioField('prior');
 		$field->setLabel($I18N->msg('string_table_prior'));
 		$field->setLabelField('keyname');
+		$field->setAttribute('id', 'prio-select'); // for selecting last option with js when adding new key
 	}
 
+	// used for maintaining view when swicthing langs
 	if (!rex_request('current_query', 'string')) {
 		$form->addParam('current_query', rex_string_table::getURLQuery($REX['CUR_CLANG']));	
 	}
 		
 	$form->show();
 }
-include $REX['INCLUDE_PATH'].'/layout/bottom.php';
 ?>
+
+<?php if ($func == "add") { ?>
+<script type="text/javascript">
+jQuery(document).ready( function($) {
+	$("#prio-select option:last").attr("selected","selected");
+});
+</script>
+<?php } ?>
+
+<?php include $REX['INCLUDE_PATH'].'/layout/bottom.php'; ?>
 
 
