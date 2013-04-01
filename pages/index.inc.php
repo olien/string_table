@@ -42,7 +42,7 @@ if ($warning != '') {
 
 // languages
 if (count($REX['CLANG']) > 1) {
-	rex_string_table::string_table_languages($params);
+	rex_string_table_utils::printLangSelect($params);
 }
 
 // rex_list
@@ -106,7 +106,7 @@ if ($func == '') {
 	$list->show();
 
 	// prio switch
-	echo rex_prio_switch::getSwitch(array($I18N->msg('prio_mode'), $I18N->msg('prio_mode_on'), $I18N->msg('prio_mode_off')));
+	rex_prio_switch::printSwitch(array($I18N->msg('prio_mode'), $I18N->msg('prio_mode_on'), $I18N->msg('prio_mode_off')));
 } elseif ($func == "add" || $func == "edit") {
 	// remove delete button for non admins
 	if ($REX['USER'] && !$REX['USER']->isAdmin()) {
@@ -153,7 +153,7 @@ if ($func == '') {
 
 	// used for maintaining view when swicthing langs
 	if (!rex_request('current_query', 'string')) {
-		$form->addParam('current_query', rex_string_table::getURLQuery($REX['CUR_CLANG']));	
+		$form->addParam('current_query', rex_string_table_utils::getURLQuery($REX['CUR_CLANG']));	
 	}
 		
 	$form->show();

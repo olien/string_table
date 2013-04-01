@@ -12,7 +12,7 @@ class rex_prio_switch {
 		}		
 	}
 
-	static function updatePrio($order, $tableWithoutPrefix, $idField, $useLike = true) {
+	protected static function updatePrio($order, $tableWithoutPrefix, $idField, $useLike = true) {
 		global $REX;
 
 		$sql = rex_sql::factory();
@@ -30,11 +30,13 @@ class rex_prio_switch {
 		}
 	}
 
-	public static function getSwitch($strings) {
+	public static function printSwitch($strings) {
 		global $REX;
 
+		$out = '';
+
 		if (isset($REX['USER']) && $REX['USER']->isAdmin() && (OOPlugin::isActivated('be_utilities', 'jquery_ui') || OOPlugin::isActivated('be_style', 'jquery_ui'))) {
-			return '
+			$out = '
 				<div class="onoffswitch-outer">
 					<span>' . $strings[0] . '</span> 
 					<div class="onoffswitch">
@@ -181,8 +183,8 @@ class rex_prio_switch {
 				});
 				</script>
 			';
-		} else {
-			return '';
 		}
+
+		echo $out;
 	}
 }

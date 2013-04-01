@@ -19,7 +19,7 @@ include($REX['INCLUDE_PATH'] . '/addons/string_table/classes/class.rex_string_ta
 
 // fetch all strings for later usage with getString method
 if (!$REX['SETUP']) {
-	rex_register_extension('ADDONS_INCLUDED', 'rex_string_table::fetchStrings');
+	rex_register_extension('ADDONS_INCLUDED', 'rex_string_table::init');
 }
 
 if ($REX['REDAXO']) {
@@ -27,13 +27,13 @@ if ($REX['REDAXO']) {
 	$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/' . $mypage . '/lang/');
 
 	// includes
+	include($REX['INCLUDE_PATH'] . '/addons/string_table/classes/class.rex_string_table_utils.inc.php');
 	include($REX['INCLUDE_PATH'] . '/addons/string_table/classes/class.rex_prio_switch.inc.php');
 	include($REX['INCLUDE_PATH'] . '/addons/string_table/classes/class.rex_form_extended.inc.php');
-	include($REX['INCLUDE_PATH'] . '/addons/string_table/extensions/extension_clang.inc.php');
 
 	// register extensions
-	rex_register_extension('CLANG_ADDED', 'string_table_clang_added');
-	rex_register_extension('CLANG_DELETED', 'string_table_clang_delete');
+	rex_register_extension('CLANG_ADDED', 'rex_string_table_utils::clangAdded');
+	rex_register_extension('CLANG_DELETED', 'rex_string_table_utils::clangDeleted');
 
 	// for ajax call: update prio in db if necessary
 	rex_prio_switch::handleAjaxCall('update_string_table_prio');

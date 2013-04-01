@@ -455,5 +455,3 @@ class rex_form_time_element extends rex_form_element
 }
 
 
-
-?>
