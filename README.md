@@ -30,5 +30,6 @@ siehe [LICENSE.md](LICENSE.md)
 Credits
 -------
 
+* Cooler On/Off Switch Generator: http://proto.io/freebies/onoff/
 * [Jan Kristinus](http://github.com/dergel) und [Thomas Blum](https://github.com/tbaddade) für das zugrundeliegende opf_lang AddOn
 
