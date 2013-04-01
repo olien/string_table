@@ -33,12 +33,12 @@ class rex_prio_switch {
 	}
 
 	public static function getSwitch($strings) {
-		global $REX, $I18N;
+		global $REX;
 
 		if (isset($REX['USER']) && $REX['USER']->isAdmin() && (OOPlugin::isActivated('be_utilities', 'jquery_ui') || OOPlugin::isActivated('be_style', 'jquery_ui'))) {
 			return '
 				<div class="onoffswitch-outer">
-					<span>' . $I18N->msg($strings[0]) . '</span> 
+					<span>' . $strings[0] . '</span> 
 					<div class="onoffswitch">
 						<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
 						<label class="onoffswitch-label" for="myonoffswitch">
@@ -97,14 +97,14 @@ class rex_prio_switch {
 				}
 
 				.onoffswitch-inner:before {
-					content: "' . $I18N->msg($strings[1]) . '";
+					content: "' . $strings[1] . '";
 					padding-left: 9px;
 					background-color: #4BC21F; color: #FFFFFF;
 					border-radius: 17px 0 0 17px;
 				}
 
 				.onoffswitch-inner:after {
-					content: "' . $I18N->msg($strings[2]) . '";
+					content: "' . $strings[2] . '";
 					padding-right: 9px;
 					background-color: #EEEEEE; color: #828282;
 					text-align: right;

@@ -106,7 +106,7 @@ if ($func == '') {
 	$list->show();
 
 	// prio switch
-	echo rex_prio_switch::getSwitch(array('prio_mode', 'prio_mode_on', 'prio_mode_off'));
+	echo rex_prio_switch::getSwitch(array($I18N->msg('prio_mode'), $I18N->msg('prio_mode_on'), $I18N->msg('prio_mode_off')));
 } elseif ($func == "add" || $func == "edit") {
 	// remove delete button for non admins
 	if ($REX['USER'] && !$REX['USER']->isAdmin()) {
