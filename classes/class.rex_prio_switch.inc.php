@@ -4,14 +4,12 @@
 class rex_prio_switch {
 	protected static $ajaxFunctionName;
 
-	public static function registerExtensionForAjaxCall($func) {
+	public static function handleAjaxCall($func) {
 		self::$ajaxFunctionName = $func;
-
-		rex_register_extension('ADDONS_INCLUDED', function() { 
-			if (rex_request('function') == self::$ajaxFunctionName) {
-				rex_prio_switch::updatePrio(rex_request('order'), 'string_table', 'keyname');
-			}
-		});
+		
+		if (rex_request('function') == self::$ajaxFunctionName) {
+			self::updatePrio(rex_request('order'), 'string_table', 'keyname');
+		}		
 	}
 
 	static function updatePrio($order, $tableWithoutPrefix, $idField, $useLike = true) {
