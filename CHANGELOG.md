@@ -1,6 +1,8 @@
 String Table - Changelog
 ========================
 
+### Version 1.3
+
 ### Version 1.2.0 - 13. März 2013
 
 * Umbennenung der DB nach `rex_string_table`
