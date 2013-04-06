@@ -35,7 +35,7 @@ if ($REX['REDAXO']) {
 	rex_register_extension('CLANG_ADDED', 'rex_string_table_utils::clangAdded');
 	rex_register_extension('CLANG_DELETED', 'rex_string_table_utils::clangDeleted');
 
-	// for ajax call: update prio in db if necessary
-	rex_prio_switch::handleAjaxCall('update_string_table_prio');
+	// init sortable rex list with prio switch
+	rex_string_table_utils::initPrioSwitch();
 } 
 

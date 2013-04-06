@@ -6,8 +6,7 @@ $sql->setQuery("
 	CREATE TABLE IF NOT EXISTS `" . $REX['TABLE_PREFIX'] . "string_table` (
 	`id` INT(11) unsigned NOT NULL auto_increment,
 	`keyname` VARCHAR(255) NOT NULL,
-	`prior` INT(11) NOT NULL,
-	`updatedate` int(11) NOT NULL,
+	`priority` INT(11) NOT NULL,
 	PRIMARY KEY ( `id` )
 );");
 

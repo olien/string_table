@@ -100,5 +100,20 @@ class rex_string_table_utils {
 		//$sql->debugsql = true;
 		$sql->setQuery('ALTER TABLE `' . $REX['TABLE_PREFIX'] . 'string_table` DROP `value_' . $id . '`');
 	}
+
+	public static function initPrioSwitch() {
+		global $REX;
+
+		// include main class
+		if (!class_exists('rex_prio_switch')) {
+			include($REX['INCLUDE_PATH'] . '/addons/string_table/classes/class.rex_prio_switch.inc.php');
+		}
+
+		// include extended class for use in this addon
+		include($REX['INCLUDE_PATH'] . '/addons/string_table/classes/class.rex_string_table_prio_switch.inc.php');
+
+		// for ajax call: update prio in db if necessary
+		rex_string_table_prio_switch::handleAjaxCall('update_string_table_prio', $REX['TABLE_PREFIX'] . 'string_table', 'keyname', true);
+	}
 }
 

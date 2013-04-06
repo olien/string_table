@@ -1,24 +1,24 @@
 <?php
-// for this to work jquery_ui plugin is needed! see getSwitch()...
 
 class rex_prio_switch {
 	protected static $ajaxFunctionName;
 
-	public static function handleAjaxCall($func) {
+	public static function handleAjaxCall($func, $table, $idField, $useLike) {
 		self::$ajaxFunctionName = $func;
 		
-		if (rex_request('function') == self::$ajaxFunctionName) {
-			self::updatePrio(rex_request('order'), 'string_table', 'keyname');
-		}		
+		if (rex_request('func') == self::$ajaxFunctionName) {
+			// update prio in db
+			self::updatePrio(rex_request('order'), $table, $idField, $useLike);
+		}
 	}
 
-	protected static function updatePrio($order, $tableWithoutPrefix, $idField, $useLike = true) {
+	protected static function updatePrio($order, $table, $idField, $useLike) {
 		global $REX;
 
 		$sql = rex_sql::factory();
 
 		foreach ($order as $prio => $keyname) {
-			$sql->setQuery('UPDATE ' . $REX['TABLE_PREFIX'] . $tableWithoutPrefix . ' SET prior = ' . ($prio + 1) . ', updatedate = ' . time() . ' ' . self::getWhere($useLike, $idField, $keyname));
+			$sql->setQuery('UPDATE ' . $table . ' SET priority = ' . ($prio + 1) . ' ' . self::getWhere($useLike, $idField, $keyname));
 		}
 	}
 
@@ -30,12 +30,12 @@ class rex_prio_switch {
 		}
 	}
 
-	public static function printSwitch($strings) {
+	public static function printSwitch($strings, $adminOnly = true) {
 		global $REX;
 
 		$out = '';
 
-		if (isset($REX['USER']) && $REX['USER']->isAdmin() && (OOPlugin::isActivated('be_utilities', 'jquery_ui') || OOPlugin::isActivated('be_style', 'jquery_ui'))) {
+		if (!$adminOnly || (isset($REX['USER']) && $REX['USER']->isAdmin())) {
 			$out = '
 				<div class="onoffswitch-outer">
 					<span>' . $strings[0] . '</span> 
@@ -57,20 +57,25 @@ class rex_prio_switch {
 					cursor: move;
 				}
 
+				div#rex-website tr.move a {
+					text-decoration: none;
+					cursor: move;
+				}
+
 				.onoffswitch-outer {
 					float: right;	
 				}
 
 				.onoffswitch-outer span { 
 					margin-right: 7px; 
-					margin-top: 14px;
+					margin-top: 17px;
 					float: left;
 				}
 
 				.onoffswitch {
 					position: relative; width: 61px;
 					-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-					margin-top: 10px;float: left;
+					margin-top: 13px;float: left;
 				}
 
 				.onoffswitch-checkbox {
@@ -135,7 +140,12 @@ class rex_prio_switch {
 				</style>
 
 				<script type="text/javascript">
+
 				jQuery(document).ready( function($) {
+					if (!jQuery.ui) {
+						$("head").append("<script type=\'text/javascript\' src=\'../' . $REX['MEDIA_ADDON_DIR'] . '/' . rex_request('page') . '/jquery-ui.min.js\' />");
+					}
+
 					if (jQuery.ui) {
 						$(".rex-table tbody").sortable({
 							helper: function(e, tr) {
@@ -159,7 +169,7 @@ class rex_prio_switch {
 
 								$.ajax({
 									type: "POST",
-									url: window.location.pathname + "?function=' . self::$ajaxFunctionName . '",
+									url: window.location.pathname + "?page=' . rex_request('page') . '&func=' . self::$ajaxFunctionName . '",
 									data: { "order[]": order },
 									success: function() {
 									}               

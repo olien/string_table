@@ -47,7 +47,7 @@ if (count($REX['CLANG']) > 1) {
 
 // rex_list
 if ($func == '') {
-	$list = rex_list::factory('SELECT * FROM '. $REX['TABLE_PREFIX'] . 'string_table ORDER BY prior');
+	$list = rex_list::factory('SELECT * FROM '. $REX['TABLE_PREFIX'] . 'string_table ORDER BY priority');
 	//$list->debug = true;
 	if ($REX['USER'] && $REX['USER']->isAdmin()) {
 		$list->addTableColumnGroup(array(50, 250, '*', 90, 90));
@@ -57,8 +57,7 @@ if ($func == '') {
 	$list->addParam("clang", $clang);
 	
 	$list->removeColumn('id');
-	$list->removeColumn('prior');
-	$list->removeColumn('updatedate');
+	$list->removeColumn('priority');
 
 	reset($REX['CLANG']);
 
@@ -126,8 +125,10 @@ if ($func == '') {
 	//$form->debug = true;
 	$form->addParam('clang', $clang);
 	
-	if($func == 'edit') {
+	if ($func == 'edit') {
 		$form->addParam('id', $id);
+	} elseif ($func == 'add') {
+		$form->addHiddenField('priority', rex_string_table::getStringCount() + 1);
 	}
 	
 	// key
@@ -143,31 +144,14 @@ if ($func == '') {
 	$field =& $form->addTextareaField('value_' . $clang);
 	$field->setLabel($I18N->msg('string_table_value'));
 
-	// prio 
-	if ($REX['USER'] && $REX['USER']->isAdmin()) {
-		$field =& $form->addPrioField('prior');
-		$field->setLabel($I18N->msg('string_table_prior'));
-		$field->setLabelField('keyname');
-		$field->setAttribute('id', 'prio-select'); // for selecting last option with js when adding new key
-	}
-
-	// used for maintaining view when swicthing langs
+	// used for maintaining view when switching langs
 	if (!rex_request('current_query', 'string')) {
 		$form->addParam('current_query', rex_string_table_utils::getURLQuery($REX['CUR_CLANG']));	
 	}
 		
 	$form->show();
 }
-?>
 
-<?php if ($func == "add") { ?>
-<script type="text/javascript">
-jQuery(document).ready( function($) {
-	$("#prio-select option:last").attr("selected","selected");
-});
-</script>
-<?php } ?>
-
-<?php include $REX['INCLUDE_PATH'].'/layout/bottom.php'; ?>
+include $REX['INCLUDE_PATH'].'/layout/bottom.php';
 
 

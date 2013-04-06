@@ -24,5 +24,9 @@ class rex_string_table {
 	public static function keyExists($key) {
 		return array_key_exists($key, self::$stringTable);
 	}
+
+	public static function getStringCount() {
+		return count(self::$stringTable);
+	}
 }
 
