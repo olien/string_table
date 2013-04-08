@@ -3,11 +3,6 @@
 class rex_string_table {
 	protected static $stringTable = array();
 
-	public static function getString($key) {
-		// rex_string_table::init() must be called once and prior to this method call, done in config.inc.php
-		return self::$stringTable[$key];
-	}
-
 	public static function init() {
 		global $REX;
 		
@@ -21,8 +16,24 @@ class rex_string_table {
 		}
 	}
 
+	public static function getString($key) {
+		if (self::keyExists($key) && !self::keyEmpty($key)) {
+			return self::$stringTable[$key];
+		} else {
+			return '[' . $key . ']';
+		}
+	}
+
 	public static function keyExists($key) {
 		return array_key_exists($key, self::$stringTable);
+	}
+
+	public static function keyEmpty($key) {
+		if (self::$stringTable[$key] == '') {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public static function getStringCount() {
