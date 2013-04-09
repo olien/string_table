@@ -175,7 +175,7 @@ class rex_prio_switch {
 									}               
 								});
 							}
-						}).disableSelection();
+						});
 
 						$(".onoffswitch-checkbox").change(function() {
 					  		if ($(this).attr("checked")){
