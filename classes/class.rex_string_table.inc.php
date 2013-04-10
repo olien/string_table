@@ -17,7 +17,7 @@ class rex_string_table {
 	}
 
 	public static function getString($key) {
-		if (self::keyExists($key) && !self::keyEmpty($key)) {
+		if (isset(self::$stringTable[$key]) && !empty(self::$stringTable[$key])) {
 			return self::$stringTable[$key];
 		} else {
 			return '[' . $key . ']';
@@ -29,11 +29,7 @@ class rex_string_table {
 	}
 
 	public static function keyEmpty($key) {
-		if (self::$stringTable[$key] == '') {
-			return true;
-		} else {
-			return false;
-		}
+		return empty(self::$stringTable[$key]);
 	}
 
 	public static function getStringCount() {
