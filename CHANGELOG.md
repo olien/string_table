@@ -1,7 +1,10 @@
 String Table - Changelog
 ========================
 
-### Version 1.3
+### Version 1.3.0 - 10. April 2013
+
+* Sortierbare Rex-List per Drag'n Drop inkl. On/Off Schalter
+* Kleinere Bugfixes und Verbesserungen
 
 ### Version 1.2.0 - 13. März 2013
 
