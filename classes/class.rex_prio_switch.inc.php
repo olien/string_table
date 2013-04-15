@@ -57,6 +57,10 @@ class rex_prio_switch {
 					cursor: move;
 				}
 
+				.rex-table tbody tr:hover.move {
+					background-color: #e3e3e3;
+				}
+
 				div#rex-website tr.move a {
 					text-decoration: none;
 					cursor: move;
@@ -154,7 +158,6 @@ class rex_prio_switch {
 
 								$helper.children().each(function(index) {
 									$(this).width($originals.eq(index).width());
-									$(this).css("background", "#ddd");
 								});
 
 								return $helper;
