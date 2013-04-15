@@ -67,7 +67,8 @@ class rex_prio_switch {
 				}
 
 				.onoffswitch-outer {
-					float: right;	
+					float: right;
+					min-width: 148px;
 				}
 
 				.onoffswitch-outer span { 
@@ -79,7 +80,7 @@ class rex_prio_switch {
 				.onoffswitch {
 					position: relative; width: 61px;
 					-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
-					margin-top: 13px;float: left;
+					margin-top: 13px;float: right;
 				}
 
 				.onoffswitch-checkbox {
