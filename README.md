@@ -16,6 +16,7 @@ Hinweise
 
 * Getestet mit REDAXO 4.4, 4.5
 * AddOn-Ordner lautet: `string_table`
+* Ein Key kann so lauten: `link_back_to_overview` (### ist also nicht nötig)
 * Momentan keine Ersetzungen mehr über den OUTPUT-FILTER EP
 
 Changelog
