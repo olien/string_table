@@ -113,7 +113,7 @@ class rex_string_table_utils {
 		include($REX['INCLUDE_PATH'] . '/addons/string_table/classes/class.rex_string_table_prio_switch.inc.php');
 
 		// for ajax call: update prio in db if necessary
-		rex_string_table_prio_switch::handleAjaxCall('update_string_table_prio', $REX['TABLE_PREFIX'] . 'string_table', 'keyname', true);
+		rex_string_table_prio_switch::handleAjaxCall('string_table', 'update_string_table_prio', $REX['TABLE_PREFIX'] . 'string_table', 'keyname', true);
 	}
 }
 

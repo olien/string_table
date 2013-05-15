@@ -28,7 +28,6 @@ if ($REX['REDAXO']) {
 
 	// includes
 	include($REX['INCLUDE_PATH'] . '/addons/string_table/classes/class.rex_string_table_utils.inc.php');
-	include($REX['INCLUDE_PATH'] . '/addons/string_table/classes/class.rex_prio_switch.inc.php');
 	include($REX['INCLUDE_PATH'] . '/addons/string_table/classes/class.rex_form_extended.inc.php');
 
 	// register extensions

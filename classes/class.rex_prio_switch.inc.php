@@ -3,12 +3,14 @@
 class rex_prio_switch {
 	protected static $ajaxFunctionName;
 
-	public static function handleAjaxCall($func, $table, $idField, $useLike) {
-		self::$ajaxFunctionName = $func;
+	public static function handleAjaxCall($page, $func, $table, $idField, $useLike) {
+		if (rex_request('page') == $page) {
+			self::$ajaxFunctionName = $func;
 		
-		if (rex_request('func') == self::$ajaxFunctionName) {
-			// update prio in db
-			self::updatePrio(rex_request('order'), $table, $idField, $useLike);
+			if (rex_request('func') == self::$ajaxFunctionName) {
+				// update prio in db
+				self::updatePrio(rex_request('order'), $table, $idField, $useLike);
+			}
 		}
 	}
 
