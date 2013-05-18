@@ -1,6 +1,11 @@
 String Table - Changelog
 ========================
 
+### Version 1.3.1 - 18. Mai 2013
+
+* Fixed: bei installiertem Website Manager funktionierte die Drag'n'Drop Sortierung nicht mehr
+* Verbesserte Drag'n'Drop Sortierung 
+
 ### Version 1.3.0 - 10. April 2013
 
 * Sortierbare Rex-List per Drag'n Drop inkl. On/Off Schalter
