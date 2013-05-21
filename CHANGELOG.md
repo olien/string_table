@@ -1,7 +1,7 @@
 String Table - Changelog
 ========================
 
-### Version 1.3.1 - 18. Mai 2013
+### Version 1.3.1 - 21. Mai 2013
 
 * Fixed: bei installiertem Website Manager funktionierte die Drag'n'Drop Sortierung nicht mehr
 * Verbesserte Drag'n'Drop Sortierung 
