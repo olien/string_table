@@ -73,6 +73,11 @@ if ($func == '') {
 
 	$list->setColumnLabel('keyname', $I18N->msg('string_table_keyname'));
 	$list->setColumnLabel('value_' . $clang, $I18N->msg('string_table_value'));
+
+	// convert line breaks to <br /> and add some more line height
+	$list->setColumnFormat('value_' . $clang, 'custom', function($params) {
+		return '<span style="line-height: 15px;">' . nl2br($params['value']) . '</span>';
+	}); 
 	
 	// icon
 	if ($REX['USER'] && $REX['USER']->isAdmin()) {
