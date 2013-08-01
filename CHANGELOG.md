@@ -1,6 +1,10 @@
 String Table - Changelog
 ========================
 
+### Version 1.3.2 - 01. August 2013
+
+* Line Breaks in den Strings werden jetzt berücksichtigt und auch in der String-Auflistung korrekt angezeigt
+
 ### Version 1.3.1 - 21. Mai 2013
 
 * Fixed: bei installiertem Website Manager funktionierte die Drag'n'Drop Sortierung nicht mehr
