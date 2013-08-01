@@ -11,7 +11,15 @@ $id = rex_request('id', 'int');
 
 // layout top
 include($REX['INCLUDE_PATH'].'/layout/top.php');
+?>
 
+<style type="text/css">
+#rex-page-string-table .rex-table td {
+	line-height: 15px;
+}
+</style>
+
+<?php
 // title
 rex_title($REX['ADDON']['name'][$page] . ' <span style="font-size:14px; color:silver;">' . $REX['ADDON']['version'][$page] . '</span>');
 
@@ -156,15 +164,7 @@ if ($func == '') {
 		
 	$form->show();
 }
-?>
 
-<style type="text/css">
-#rex-page-string-table .rex-table td {
-	line-height: 15px;
-}
-</style>
-
-<?php
 include $REX['INCLUDE_PATH'].'/layout/bottom.php';
 
 
