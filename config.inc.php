@@ -5,7 +5,7 @@ $REX['ADDON']['rxid'][$mypage] = "1024";
 $REX['ADDON']['page'][$mypage] = $mypage;
 $REX['ADDON']['name'][$mypage] = 'String Table';
 $REX['ADDON']['perm'][$mypage] = 'string_table[]';
-$REX['ADDON']['version'][$mypage] = '1.3.2';
+$REX['ADDON']['version'][$mypage] = '1.4.0 dev';
 $REX['ADDON']['author'][$mypage] = 'Jan Kristinus, Thomas Blum, RexDude';
 $REX['ADDON']['supportpage'][$mypage] = 'forum.redaxo.de';
 $REX['ADDON']['table_prefix'][$mypage] = $REX['TABLE_PREFIX'] . $REX['ADDON']['rxid'][$mypage] . '_';
@@ -42,3 +42,8 @@ if ($REX['REDAXO']) {
 	// init sortable rex list with prio switch
 	rex_string_table_utils::initPrioSwitch();
 } 
+
+// additional function for retrieving strings
+function rex_getString($key) {
+	return rex_string_table::getString($key);
+}
