@@ -1,6 +1,11 @@
 String Table - Changelog
 ========================
 
+### Version 1.4.0
+
+* Auto Replace Methode hinzugefügt um die Keys (###key###) automatisch ersetzen zu lassen. Einstellung der Start- und Endzeichenkette ebenfalls möglich.
+* `settings.inc.php` hinzugefügt mit Einstellungsmöglichkeiten für das AddOn
+
 ### Version 1.3.2 - 01. August 2013
 
 * Line Breaks in den Strings werden jetzt berücksichtigt und auch in der String-Auflistung korrekt angezeigt

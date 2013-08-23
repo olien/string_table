@@ -15,11 +15,16 @@ $REX['PERM'][] = 'string_table[]';
 $prefix = $REX['ADDON']['table_prefix'][$mypage];
 
 // includes
+include($REX['INCLUDE_PATH'] . '/addons/string_table/settings.inc.php');
 include($REX['INCLUDE_PATH'] . '/addons/string_table/classes/class.rex_string_table.inc.php');
 
 // fetch all strings for later usage with getString method
 if (!$REX['SETUP']) {
 	rex_register_extension('ADDONS_INCLUDED', 'rex_string_table::init');
+
+	if (!$REX['REDAXO'] && $REX['ADDON']['string_table']['settings']['auto_replace']) {
+		rex_register_extension('OUTPUT_FILTER', 'rex_string_table::replace');
+	}
 }
 
 if ($REX['REDAXO']) {
@@ -37,4 +42,3 @@ if ($REX['REDAXO']) {
 	// init sortable rex list with prio switch
 	rex_string_table_utils::initPrioSwitch();
 } 
-

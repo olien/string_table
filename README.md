@@ -1,7 +1,7 @@
 String Table AddOn für REDAXO 4
 ===============================
 
-Mit diesem REDAXO AddOn kann man globale Strings in eine Datenbank-Tabelle speichern und per PHP-Methode auslesen. Es ist ein modifiziertes opf_lang AddOn allerdings ohne den Gebrauch des OUTPUT_FILTER EP's.
+Mit diesem REDAXO AddOn kann man globale Strings in eine Datenbank-Tabelle speichern und per PHP-Methode auslesen. Es ist ein modifiziertes opf_lang AddOn.
 
 Features
 --------
@@ -10,14 +10,14 @@ Features
 * Mehrsprachigkeit wird berücksichtigt
 * Nicht-Admins dürfen den String-Key nicht ändern
 * Prio änderbar über Drag'n Drop inkl. coolem On/Off Switch
+* Zusätzliche automatische Ersetzung nun auch über die OUTPUT_FILTER Methode einstellbar. Die Keys werden dann so notiert: ###key###
 
 Hinweise
 --------
 
 * Getestet mit REDAXO 4.4, 4.5
 * AddOn-Ordner lautet: `string_table`
-* Ein Key kann so lauten: `link_back_to_overview` (### ist also nicht nötig)
-* Momentan keine Ersetzungen mehr über den OUTPUT-FILTER EP
+* Ein Key kann so lauten: `link_back_to_overview` (bitte hier keine ### oder ähnliches eintragen)
 
 Changelog
 ---------

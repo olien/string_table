@@ -2,6 +2,8 @@
 
 class rex_string_table {
 	protected static $stringTable = array();
+	protected static $stringTableKeys = array();
+	protected static $stringTableValues = array();
 
 	public static function init() {
 		global $REX;
@@ -11,9 +13,20 @@ class rex_string_table {
 		$rows = $sql->getRows();
 
 		for ($i = 0; $i < $rows; $i ++) {
-			self::$stringTable[$sql->getValue('keyname')] = nl2br($sql->getValue('value_' . $REX['CUR_CLANG']));
+			$key = $sql->getValue('keyname');
+			$value = nl2br($sql->getValue('value_' . $REX['CUR_CLANG']));
+
+			self::$stringTable[$key] = $value;
+			self::$stringTableKeys[] = $REX['ADDON']['string_table']['settings']['key_start_token'] . $key . $REX['ADDON']['string_table']['settings']['key_end_token'];
+			self::$stringTableValues[] = $value;
+
 			$sql->next();
 		}
+	}
+
+	public static function replace($params) {
+		$content = $params['subject'];
+		return str_replace(self::$stringTableKeys, self::$stringTableValues, $content);
 	}
 
 	public static function getString($key) {
