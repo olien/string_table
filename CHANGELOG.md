@@ -3,6 +3,7 @@ String Table - Changelog
 
 ### Version 1.4.0
 
+* Ist der String des Keys leer oder ist der Key nicht vorhanden, wird dieser mit einem Span un der CSS-Klasse `string-table-key` versehen. Im Frontend können diese Keys dann per CSS optisch aufgewertet werden für den Redakteur
 * Auto Replace Methode hinzugefügt um die Keys (###key###) automatisch ersetzen zu lassen. Einstellung der Start- und Endzeichenkette ebenfalls möglich.
 * `settings.inc.php` hinzugefügt mit Einstellungsmöglichkeiten für das AddOn
 

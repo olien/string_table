@@ -33,7 +33,7 @@ class rex_string_table {
 		if (isset(self::$stringTable[$key]) && !empty(self::$stringTable[$key])) {
 			return self::$stringTable[$key];
 		} else {
-			return '[' . $key . ']';
+			return '<span class="string-table-key">[' . $key . ']</span>';
 		}
 	}
 
