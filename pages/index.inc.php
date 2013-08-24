@@ -55,7 +55,7 @@ if (count($REX['CLANG']) > 1) {
 
 // rex_list
 if ($func == '') {
-	$list = rex_list::factory('SELECT * FROM '. $REX['TABLE_PREFIX'] . 'string_table ORDER BY priority');
+	$list = rex_list::factory('SELECT * FROM '. $REX['TABLE_PREFIX'] . 'string_table ORDER BY priority', 10000);
 	//$list->debug = true;
 	if ($REX['USER'] && $REX['USER']->isAdmin()) {
 		$list->addTableColumnGroup(array(50, 250, '*', 90, 90));

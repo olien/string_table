@@ -3,6 +3,7 @@ String Table - Changelog
 
 ### Version 1.4.0
 
+* Paginierung der String_liste vorerst "deaktiviert", da es zu Problemen kam mit der Drag n' Drop Sortierung.
 * `rex_getString($key)` als Kurzschreibweise zu `rex_string_table::getString($key)` hinzugefügt
 * Ist der String des Keys leer oder ist der Key nicht vorhanden, wird ein Platzhalter inkl. Span und der CSS-Klasse `string-table-key` angezeigt. Im Frontend können diese Platzhalter dann per CSS optisch aufgewertet werden.
 * Auto Replace Methode hinzugefügt um die Keys automatisch ersetzen zu lassen (standardmäßig abgeschaltet). Einstellung der Start- und Endzeichenkette ebenfalls möglich. Die Keys ganz normal in die String Table schreiben: key. Im eigenen Code (Templates/Module) dann so: ###key###
