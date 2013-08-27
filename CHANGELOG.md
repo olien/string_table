@@ -1,12 +1,12 @@
 String Table - Changelog
 ========================
 
-### Version 1.4.0
+### Version 1.4.0 - 27. August 2013
 
-* Paginierung der String_liste vorerst "deaktiviert", da es zu Problemen kam mit der Drag n' Drop Sortierung.
+* Paginierung der Stringliste vorerst "deaktiviert", da es zu Problemen kam mit der Drag n' Drop Sortierung.
 * `rex_getString($key)` als Kurzschreibweise zu `rex_string_table::getString($key)` hinzugefügt
 * Ist der String des Keys leer oder ist der Key nicht vorhanden, wird ein Platzhalter inkl. Span und der CSS-Klasse `string-table-key` angezeigt. Im Frontend können diese Platzhalter dann per CSS optisch aufgewertet werden.
-* Auto Replace Methode hinzugefügt um die Keys automatisch ersetzen zu lassen (standardmäßig abgeschaltet). Einstellung der Start- und Endzeichenkette ebenfalls möglich. Die Keys ganz normal in die String Table schreiben: key. Im eigenen Code (Templates/Module) dann so: ###key###
+* Auto Replace Methode hinzugefügt um die Keys automatisch ersetzen zu lassen (standardmäßig abgeschaltet). Einstellung der Start- und Endzeichenkette ebenfalls möglich. Die Keys ganz normal in die String Table schreiben: key. Im eigenen Code (Templates/Module) dann so: ###key### (bzw. je nach gewählter Start/Endzeichenkette)
 * `settings.inc.php` hinzugefügt mit Einstellungsmöglichkeiten für das AddOn
 
 ### Version 1.3.2 - 01. August 2013
