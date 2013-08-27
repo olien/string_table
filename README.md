@@ -1,7 +1,7 @@
 String Table AddOn für REDAXO 4
 ===============================
 
-Mit diesem REDAXO AddOn kann man globale Strings in eine Datenbank-Tabelle speichern und per PHP-Methode auslesen. Es ist ein modifiziertes opf_lang AddOn mit ein paar zusätzlichen Features.
+Mit diesem REDAXO AddOn kann man globale Strings in eine Datenbank-Tabelle speichern und per PHP-Methode auslesen. Es ist ein modifiziertes opf_lang AddOn und ist nützlich wenn man Wörter/Sätze aus Templates und Modulen herausziehen will um diese änderbar für Kunden/Redakteure zu machen. Sehr nützlich auch bei mehrsprachigen Websites.
 
 Features
 --------
