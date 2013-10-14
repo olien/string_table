@@ -10,6 +10,9 @@ class rex_prio_switch {
 			if (rex_request('func') == self::$ajaxFunctionName) {
 				// update prio in db
 				self::updatePrio(rex_request('order'), $table, $idField, $useLike);
+
+				// stop executing rest of redaxo stuff
+				exit;
 			}
 		}
 	}
