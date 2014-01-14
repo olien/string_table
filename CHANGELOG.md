@@ -1,6 +1,11 @@
 String Table - Changelog
 ========================
 
+### Version 1.5.0 - 14. Januar 2014
+
+* `rex_string_table::getString()` Methode bzw. `rex_getString()` Funktion um folgende Parameter ergänzt: `$fillEmpty = true` (steuert ob ein Platzhalter bei einem leeren String angezeigt wird) und `$clang = -1` (steuert die Sprache des Strings, damit kann man z.B. einen sprachunabhängigen String nutzen der für alle Sprachen gleich sein soll)
+* Mini-Codebeispiel zur Readme hinzugefügt (API)
+
 ### Version 1.4.0 - 27. August 2013
 
 * Paginierung der Stringliste vorerst "deaktiviert", da es zu Problemen kam mit der Drag n' Drop Sortierung.

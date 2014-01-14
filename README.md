@@ -20,9 +20,9 @@ API
 // $key: der key der den string repräsentiert
 // $fillEmpty: bestimmt ob ein platzhalter angezeigt wird wenn string leer (optional)
 // $clang: bestimmt die sprache des strings (optional, sonst wird aktuelle sprache genommen)
-echo rex_string_table::getString('foo', $fillEmpty = true, $clang = -1);
+echo rex_string_table::getString($key, $fillEmpty = true, $clang = -1);
 
-// kurzschreibweise:
+// kurzschreibweise (gibt den string zum key "foo" zurück):
 echo rex_getString('foo');
 ```
 
