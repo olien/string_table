@@ -12,6 +12,20 @@ Features
 * Nicht-Admins dürfen den String-Key nicht ändern
 * Prio änderbar über Drag'n Drop inkl. coolem On/Off Switch
 
+API
+---
+
+```php
+// gibt einen string zurück
+// $key: der key der den string repräsentiert
+// $fillEmpty: bestimmt ob ein platzhalter angezeigt wird wenn string leer (optional)
+// $clang: bestimmt die sprache des strings (optional, sonst wird aktuelle sprache genommen)
+echo rex_string_table::getString('foo', $fillEmpty = true, $clang = -1);
+
+// kurzschreibweise:
+echo rex_getString('foo');
+```
+
 Hinweise
 --------
 
@@ -33,5 +47,6 @@ Credits
 -------
 
 * Cooler On/Off Switch Generator: http://proto.io/freebies/onoff/
+* jQuery UI: http://jqueryui.com/
 * [Jan Kristinus](http://github.com/dergel) und [Thomas Blum](https://github.com/tbaddade) für das zugrundeliegende opf_lang AddOn
 * [polarpixel](https://github.com/polarpixel) für Testing und Verbesserungsvorschläge
