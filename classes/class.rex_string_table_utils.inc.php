@@ -77,6 +77,11 @@ class rex_string_table_utils {
 
 		$params = $_GET;
 		$params['clang'] = $clang;
+
+		if (isset($params[$params['list'] . '_msg'])) {
+			unset($params[$params['list'] . '_msg']);
+		}
+
 		return http_build_query($params);
 	}
 
