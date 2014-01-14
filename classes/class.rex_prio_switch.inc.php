@@ -4,7 +4,9 @@ class rex_prio_switch {
 	protected static $ajaxFunctionName;
 
 	public static function handleAjaxCall($page, $func, $table, $idField, $useLike) {
-		if (rex_request('page') == $page) {
+		global $REX;
+
+		if (isset($REX['USER']) && rex_request('page') == $page) {
 			self::$ajaxFunctionName = $func;
 		
 			if (rex_request('func') == self::$ajaxFunctionName) {

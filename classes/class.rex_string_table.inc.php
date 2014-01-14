@@ -5,48 +5,64 @@ class rex_string_table {
 	protected static $stringTableKeys = array();
 	protected static $stringTableValues = array();
 
+	protected static $curClang = 0;
+
 	public static function init() {
 		global $REX;
+
+		self::$curClang = $REX['CUR_CLANG'];
 		
 		$sql = new rex_sql();
-		$sql->setQuery('SELECT keyname, value_' . $REX['CUR_CLANG'] . ' FROM '. $REX['TABLE_PREFIX'] . 'string_table');
-		$rows = $sql->getRows();
+		$sql->setQuery('SELECT * FROM '. $REX['TABLE_PREFIX'] . 'string_table');
 
-		for ($i = 0; $i < $rows; $i ++) {
-			$key = $sql->getValue('keyname');
-			$value = nl2br($sql->getValue('value_' . $REX['CUR_CLANG']));
+		foreach ($REX['CLANG'] as $clangId => $clangName) {
+			for ($i = 0; $i < $sql->getRows(); $i ++) {
+				$key = $sql->getValue('keyname');
+				$value = nl2br($sql->getValue('value_' . $clangId));
 
-			self::$stringTable[$key] = $value;
-			self::$stringTableKeys[] = $REX['ADDON']['string_table']['settings']['key_start_token'] . $key . $REX['ADDON']['string_table']['settings']['key_end_token'];
-			self::$stringTableValues[] = $value;
+				self::$stringTable[$clangId][$key] = $value;
+				self::$stringTableKeys[$clangId][] = $REX['ADDON']['string_table']['settings']['key_start_token'] . $key . $REX['ADDON']['string_table']['settings']['key_end_token'];
+				self::$stringTableValues[$clangId][] = $value;
 
-			$sql->next();
+				$sql->next();
+			}
+
+			$sql->reset();
 		}
 	}
 
 	public static function replace($params) {
 		$content = $params['subject'];
-		return str_replace(self::$stringTableKeys, self::$stringTableValues, $content);
+
+		return str_replace(self::$stringTableKeys[self::$curClang], self::$stringTableValues[self::$curClang], $content);
 	}
 
-	public static function getString($key) {
-		if (isset(self::$stringTable[$key]) && !empty(self::$stringTable[$key])) {
-			return self::$stringTable[$key];
+	public static function getString($key, $fillEmpty = true, $clang = -1) {
+		if ($clang == -1) {
+			$clang = self::$curClang;
+		}
+		
+		if (isset(self::$stringTable[$clang][$key]) && !empty(self::$stringTable[$clang][$key])) {
+			return self::$stringTable[$clang][$key];
 		} else {
-			return '<span class="string-table-key">[' . $key . ']</span>';
+			if ($fillEmpty) {
+				return '<span class="string-table-key">[' . $key . ']</span>';
+			} else {
+				return '';
+			}
 		}
 	}
 
 	public static function keyExists($key) {
-		return array_key_exists($key, self::$stringTable);
+		return array_key_exists($key, self::$stringTable[self::$curClang]);
 	}
 
 	public static function keyEmpty($key) {
-		return empty(self::$stringTable[$key]);
+		return empty(self::$stringTable[self::$curClang][$key]);
 	}
 
-	public static function getStringCount() {
-		return count(self::$stringTable);
+	public static function getKeyCount() {
+		return count(self::$stringTable[self::$curClang]);
 	}
 }
 

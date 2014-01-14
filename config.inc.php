@@ -44,6 +44,6 @@ if ($REX['REDAXO']) {
 } 
 
 // additional function for retrieving strings
-function rex_getString($key) {
-	return rex_string_table::getString($key);
+function rex_getString($key, $fillEmpty = true, $clang = -1) {
+	return rex_string_table::getString($key, $fillEmpty, $clang);
 }
