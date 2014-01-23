@@ -141,7 +141,7 @@ if ($func == '') {
 	if ($func == 'edit') {
 		$form->addParam('id', $id);
 	} elseif ($func == 'add') {
-		$form->addHiddenField('priority', rex_string_table::getStringCount() + 1);
+		$form->addHiddenField('priority', rex_string_table::getKeyCount() + 1);
 	}
 	
 	// key
