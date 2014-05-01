@@ -62,7 +62,11 @@ class rex_string_table {
 	}
 
 	public static function getKeyCount() {
-		return count(self::$stringTable[self::$curClang]);
+		if (isset(self::$stringTable[self::$curClang])) {
+			return count(self::$stringTable[self::$curClang]);
+		} else {
+			return 0;
+		}
 	}
 }
 
