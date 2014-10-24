@@ -1,6 +1,10 @@
 String Table - Changelog
 ========================
 
+### Version 1.6.0 DEV
+
+* Updatefähigkeit für REDAXO 4.6 hergestellt. Einstellungen werden jetzt im Data-Ordner gespeichert.
+
 ### Version 1.5.1 - 23. Januar 2014
 
 * Fixed: Bug beim Hinzufügen von einem neuen String, thx@robo
