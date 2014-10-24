@@ -29,7 +29,7 @@ echo rex_getString('foo');
 Hinweise
 --------
 
-* Getestet mit REDAXO 4.3, 4.4, 4.5
+* Getestet mit REDAXO 4.3, 4.4, 4.5, 4.6
 * AddOn-Ordner lautet: `string_table`
 * Ein Key wird so notiert: `linktext_footer` (bitte hier keine ### oder ähnliches eintragen)
 * Einstellungen befinden sich in der Datei: `/include/data/addons/string_table/settings.inc.php`
