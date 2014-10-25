@@ -1,7 +1,7 @@
 String Table - Changelog
 ========================
 
-### Version 1.6.0 DEV
+### Version 1.6.0 - 25. Oktober 2014
 
 * Updatefähigkeit für REDAXO 4.6 hergestellt. Einstellungen werden jetzt im Data-Ordner gespeichert.
 
