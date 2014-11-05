@@ -1,19 +1,6 @@
 <?php
 $mypage = 'string_table'; // only for this file
 
-$REX['ADDON']['rxid'][$mypage] = "1024";
-$REX['ADDON']['page'][$mypage] = $mypage;
-$REX['ADDON']['name'][$mypage] = 'String Table';
-$REX['ADDON']['perm'][$mypage] = 'string_table[]';
-$REX['ADDON']['version'][$mypage] = '1.6.0';
-$REX['ADDON']['author'][$mypage] = 'Jan Kristinus, Thomas Blum, RexDude';
-$REX['ADDON']['supportpage'][$mypage] = 'forum.redaxo.de';
-$REX['ADDON']['table_prefix'][$mypage] = $REX['TABLE_PREFIX'] . $REX['ADDON']['rxid'][$mypage] . '_';
-$REX['ADDON']['path'][$mypage] = $REX['INCLUDE_PATH'] . '/addons/' . $mypage;
-$REX['PERM'][] = 'string_table[]';
-
-$prefix = $REX['ADDON']['table_prefix'][$mypage];
-
 // add lang file
 if ($REX['REDAXO']) {
 	$I18N->appendFile($REX['INCLUDE_PATH'] . '/addons/string_table/lang/');
@@ -25,6 +12,7 @@ require($REX['INCLUDE_PATH'] . '/addons/string_table/classes/class.rex_string_ta
 
 // default settings (user settings are saved in data dir!)
 $REX['ADDON']['string_table']['settings'] = array(
+	'addon_name' => 'String Table',
 	'auto_replace' => false,
 	'key_start_token' => '###',
 	'key_end_token' => '###'
@@ -32,6 +20,19 @@ $REX['ADDON']['string_table']['settings'] = array(
 
 // overwrite default settings with user settings
 rex_string_table_utils::includeSettingsFile();
+
+$REX['ADDON']['rxid'][$mypage] = "1024";
+$REX['ADDON']['page'][$mypage] = $mypage;
+$REX['ADDON']['name'][$mypage] = $REX['ADDON']['string_table']['settings']['addon_name'];
+$REX['ADDON']['perm'][$mypage] = 'string_table[]';
+$REX['ADDON']['version'][$mypage] = '1.6.1';
+$REX['ADDON']['author'][$mypage] = 'Jan Kristinus, Thomas Blum, RexDude';
+$REX['ADDON']['supportpage'][$mypage] = 'forum.redaxo.de';
+$REX['ADDON']['table_prefix'][$mypage] = $REX['TABLE_PREFIX'] . $REX['ADDON']['rxid'][$mypage] . '_';
+$REX['ADDON']['path'][$mypage] = $REX['INCLUDE_PATH'] . '/addons/' . $mypage;
+$REX['PERM'][] = 'string_table[]';
+
+$prefix = $REX['ADDON']['table_prefix'][$mypage];
 
 // fetch all strings for later usage with getString method
 if (!$REX['SETUP']) {

@@ -1,6 +1,10 @@
 String Table - Changelog
 ========================
 
+### Version 1.6.1
+
+* Addon-Name in Settings-Datei ausgelagert. Bei einem Update muss die settings.inc.php im Data Ordner einmal gelöscht werden.
+
 ### Version 1.6.0 - 25. Oktober 2014
 
 * Updatefähigkeit für REDAXO 4.6 hergestellt. Einstellungen werden jetzt im Data-Ordner gespeichert.
