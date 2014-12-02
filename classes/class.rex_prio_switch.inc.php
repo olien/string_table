@@ -64,8 +64,9 @@ class rex_prio_switch {
 					cursor: move;
 				}
 
-				.rex-table tbody tr:hover.move {
-					background-color: #e3e3e3;
+				.rex-table tbody tr.move:hover,
+				.rex-table tbody tr.move:hover td {
+					background-color: #e3e3e3 !important;
 				}
 
 				div#rex-website tr.move a {
