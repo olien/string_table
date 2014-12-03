@@ -1,7 +1,7 @@
 String Table - Changelog
 ========================
 
-### Version 1.6.1
+### Version 1.6.1 - 03. Dezember 2014
 
 * Addon-Name in Settings-Datei ausgelagert. Bei einem Update muss die settings.inc.php im Data Ordner einmal gelöscht werden.
 
